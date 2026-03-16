@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuvode — All-In-One Marketing Software</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628;
+    --navy-light: #1E293B;
+    --cyan: #0099BB;
+    --cyan-light: #E0F7FA;
+    --cyan-bg: #F0FBFD;
+    --bg: #FFFFFF;
+    --bg2: #F8FAFC;
+    --bg3: #F1F5F9;
+    --card: #FFFFFF;
+    --border: #E2E8F0;
+    --text: #0F172A;
+    --text2: #334155;
+    --mid: #64748B;
+    --dim: #94A3B8;
+    --green: #10B981;
+    --green-bg: #ECFDF5;
+    --purple: #7C3AED;
+    --purple-bg: #F5F3FF;
+    --orange: #F59E0B;
+    --orange-bg: #FFFBEB;
+    --pink: #EC4899;
+    --pink-bg: #FDF2F8;
+    --font: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text2);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { text-decoration: none; color: inherit; }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+
+  .nav-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+
+  .nav-logo {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo svg { flex-shrink: 0; }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--mid);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFF !important;
+    background: var(--navy);
+    padding: 10px 22px;
+    border-radius: 10px;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--navy-light); }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 150px 0 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-text { position: relative; z-index: 2; }
+
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cyan);
+    background: var(--cyan-bg);
+    padding: 6px 16px;
+    border-radius: 24px;
+    margin-bottom: 24px;
+  }
+
+  .hero-pill-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+  }
+
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 span { color: var(--cyan); }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 460px;
+  }
+
+  .hero-actions { display: flex; gap: 12px; align-items: center; }
+
+  .btn-primary {
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    color: #FFF;
+    background: var(--navy);
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover { background: var(--navy-light); transform: translateY(-1px); }
+
+  .btn-ghost {
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 8px;
+    transition: color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--cyan); }
+
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-img-wrap {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+  }
+
+  .hero-dashboard-mini {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .dash-mini-bar {
+    display: flex;
+    gap: 6px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dash-mini-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  .dash-mini-body { padding: 20px; }
+
+  .dash-mini-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .dash-mini-stat {
+    background: var(--bg2);
+    border-radius: 10px;
+    padding: 14px;
+  }
+
+  .dash-mini-stat-label { font-size: 11px; color: var(--dim); margin-bottom: 4px; }
+  .dash-mini-stat-val { font-size: 20px; font-weight: 700; color: var(--text); }
+  .dash-mini-stat-change { font-size: 11px; font-weight: 600; color: var(--green); margin-top: 2px; }
+
+  .dash-mini-chart {
+    height: 80px;
+    background: var(--bg2);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative blobs */
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .blob-1 { width: 300px; height: 300px; background: var(--cyan-bg); top: -80px; right: -100px; opacity: 0.7; }
+  .blob-2 { width: 200px; height: 200px; background: var(--purple-bg); bottom: -60px; left: -80px; opacity: 0.6; }
+  .blob-3 { width: 150px; height: 150px; background: var(--orange-bg); top: 50%; right: -50px; opacity: 0.5; }
+
+  /* Floating badge on hero image */
+  .hero-float {
+    position: absolute;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    z-index: 3;
+  }
+
+  .hero-float-1 { bottom: -16px; left: -20px; }
+  .hero-float-2 { top: 20px; right: -24px; }
+
+  .hero-float-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .hero-float-text { font-size: 12px; font-weight: 600; color: var(--text); }
+  .hero-float-sub { font-size: 11px; color: var(--dim); }
+
+  /* ============ TRUST ============ */
+  .trust {
+    padding: 50px 0;
+    text-align: center;
+  }
+
+  .trust-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--dim);
+    margin-bottom: 24px;
+  }
+
+  .trust-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    opacity: 0.25;
+  }
+
+  .trust-logo {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+
+  /* ============ PROBLEM SECTIONS (Zigzag) ============ */
+  .zigzag {
+    padding: 100px 0;
+  }
+
+  .zigzag-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .zigzag-header h2 {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+
+  .zigzag-header p {
+    font-size: 17px;
+    color: var(--mid);
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .zigzag-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 100px;
+  }
+
+  .zigzag-row:last-child { margin-bottom: 0; }
+
+  .zigzag-row.reverse .zigzag-text { order: 2; }
+  .zigzag-row.reverse .zigzag-visual { order: 1; }
+
+  .zigzag-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .zigzag-badge.crm { background: var(--cyan-bg); color: var(--cyan); }
+  .zigzag-badge.auto { background: var(--purple-bg); color: var(--purple); }
+  .zigzag-badge.vode { background: var(--green-bg); color: var(--green); }
+
+  .zigzag-text h3 {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.8px;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .zigzag-text p {
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .zigzag-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .zigzag-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text2);
+  }
+
+  .zigzag-check {
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+
+  .zigzag-check.cyan { background: var(--cyan-bg); color: var(--cyan); }
+  .zigzag-check.purple { background: var(--purple-bg); color: var(--purple); }
+  .zigzag-check.green { background: var(--green-bg); color: var(--green); }
+
+  .zigzag-visual {
+    position: relative;
+  }
+
+  .zigzag-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    position: relative;
+  }
+
+  .zigzag-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .zigzag-pipeline {
+    display: flex;
+    gap: 8px;
+  }
+
+  .pipeline-col {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .pipeline-col-title {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .pipeline-item {
+    background: var(--bg2);
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    font-size: 11px;
+    color: var(--text2);
+    border-left: 3px solid;
+  }
+
+  .pipeline-item:last-child { margin-bottom: 0; }
+
+  /* Automation visual */
+  .auto-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .auto-step {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    transition: all 0.2s;
+  }
+
+  .auto-step:hover { border-color: var(--purple); }
+
+  .auto-step-num {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: var(--purple-bg);
+    color: var(--purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .auto-step-text { font-size: 13px; font-weight: 500; color: var(--text2); }
+  .auto-step-sub { font-size: 11px; color: var(--dim); }
+
+  .auto-connector {
+    width: 2px;
+    height: 12px;
+    background: var(--border);
+    margin-left: 32px;
+  }
+
+  /* Vode visual */
+  .vode-chat {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .vode-msg {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .vode-msg.ai {
+    background: var(--green-bg);
+    color: var(--text2);
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+  }
+
+  .vode-msg.user {
+    background: var(--navy);
+    color: #FFF;
+    border-bottom-right-radius: 4px;
+    align-self: flex-end;
+  }
+
+  .vode-msg-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--dim);
+    margin-bottom: 4px;
+  }
+
+  /* ============ FEATURES GRID ============ */
+  .features {
+    padding: 100px 0;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .features-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .features-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .features-header p {
+    font-size: 16px;
+    color: var(--mid);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .feature-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: all 0.2s;
+  }
+
+  .feature-card:hover { border-color: #CBD5E1; transform: translateY(-2px); }
+
+  .feature-icon {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+
+  .feature-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .feature-desc {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  /* ============ PRICING ============ */
+  .pricing {
+    padding: 100px 0;
+  }
+
+  .pricing-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .pricing-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .pricing-header p {
+    font-size: 16px;
+    color: var(--mid);
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .price-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 24px;
+    position: relative;
+    transition: all 0.2s;
+  }
+
+  .price-card:hover { transform: translateY(-2px); border-color: #CBD5E1; }
+
+  .price-card.featured { border-color: var(--navy); border-width: 2px; }
+
+  .price-card.featured::before {
+    content: 'Most popular';
+    position: absolute;
+    top: -12px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    font-weight: 700;
+    color: #FFF;
+    background: var(--navy);
+    padding: 4px 16px;
+    border-radius: 20px;
+  }
+
+  .price-plan { font-size: 14px; font-weight: 500; color: var(--mid); margin-bottom: 8px; }
+
+  .price-amount {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -2px;
+    margin-bottom: 4px;
+  }
+
+  .price-amount span { font-size: 16px; font-weight: 400; color: var(--dim); letter-spacing: 0; }
+
+  .price-desc { font-size: 13px; color: var(--dim); margin-bottom: 24px; }
+
+  .price-features {
+    list-style: none;
+    margin-bottom: 24px;
+  }
+
+  .price-features li {
+    font-size: 13px;
+    color: var(--text2);
+    padding: 7px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .price-features li::before {
+    content: '\2713';
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green);
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--green-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .price-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .price-btn:hover { background: var(--bg2); }
+
+  .price-card.featured .price-btn {
+    background: var(--navy);
+    color: #FFF;
+    border-color: var(--navy);
+  }
+
+  .price-card.featured .price-btn:hover { background: var(--navy-light); }
+
+  /* ============ CTA ============ */
+  .cta {
+    padding: 100px 0;
+    text-align: center;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+  }
+
+  .cta h2 {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+
+  .cta p {
+    font-size: 17px;
+    color: var(--mid);
+    max-width: 440px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+
+  .cta-actions { display: flex; justify-content: center; gap: 12px; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 64px 0 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-brand { font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .footer-desc { font-size: 14px; color: var(--mid); line-height: 1.6; max-width: 260px; }
+
+  .footer-col-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 14px; }
+
+  .footer-col a {
+    display: block;
+    font-size: 13px;
+    color: var(--mid);
+    padding: 4px 0;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--text); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--dim);
+  }
+
+  @media (max-width: 900px) {
+    .hero-content, .zigzag-row { grid-template-columns: 1fr; gap: 40px; }
+    .zigzag-row.reverse .zigzag-text, .zigzag-row.reverse .zigzag-visual { order: unset; }
+    .features-grid, .pricing-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 36px; }
+    .nav-links { display: none; }
+    .dash-mini-stats { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="6" width="88" height="88" rx="20" fill="#0A1628"/>
+        <path d="M26 74V26h12l20 28V26h12v48H58L38 46v28H26z" fill="#FFF"/>
+      </svg>
+      Nuvode
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Log in</a></li>
+      <li><a href="#" class="nav-cta">Get started free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-pill">
+          <span class="hero-pill-dot"></span>
+          Now in beta — join the waitlist
+        </div>
+        <h1>Stop losing leads.<br>Start <span>closing</span> them.</h1>
+        <p class="hero-sub">Nuvode is the all-in-one CRM and marketing automation platform that captures, nurtures, and converts your leads on autopilot.</p>
+        <div class="hero-actions">
+          <button class="btn-primary">Start for free →</button>
+          <button class="btn-ghost">▶ See how it works</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="hero-img-wrap">
+          <div class="hero-dashboard-mini">
+            <div class="dash-mini-bar">
+              <span class="dash-mini-dot" style="background:#FF5F57;"></span>
+              <span class="dash-mini-dot" style="background:#FEBC2E;"></span>
+              <span class="dash-mini-dot" style="background:#28C840;"></span>
+            </div>
+            <div class="dash-mini-body">
+              <div class="dash-mini-stats">
+                <div class="dash-mini-stat">
+                  <div class="dash-mini-stat-label">Revenue</div>
+                  <div class="dash-mini-stat-val">$24.8K</div>
+                  <div class="dash-mini-stat-change">↑ 18.4%</div>
+                </div>
+                <div class="dash-mini-stat">
+                  <div class="dash-mini-stat-label">Leads</div>
+                  <div class="dash-mini-stat-val">847</div>
+                  <div class="dash-mini-stat-change">↑ 24.1%</div>
+                </div>
+                <div class="dash-mini-stat">
+                  <div class="dash-mini-stat-label">Conversion</div>
+                  <div class="dash-mini-stat-val">12.3%</div>
+                  <div class="dash-mini-stat-change">↑ 3.2%</div>
+                </div>
+              </div>
+              <div class="dash-mini-chart">
+                <svg width="100%" height="100%" viewBox="0 0 400 80" preserveAspectRatio="none">
+                  <path d="M0 60 Q40 55 80 48 T160 35 T240 38 T320 20 T400 12" fill="none" stroke="#0A1628" stroke-width="2"/>
+                  <path d="M0 60 Q40 55 80 48 T160 35 T240 38 T320 20 T400 12 V80 H0 Z" fill="rgba(10,22,40,0.04)"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating badges -->
+          <div class="hero-float hero-float-1">
+            <div class="hero-float-icon" style="background:var(--green-bg);">✓</div>
+            <div>
+              <div class="hero-float-text">Lead captured</div>
+              <div class="hero-float-sub">Vode auto-responded in 8s</div>
+            </div>
+          </div>
+          <div class="hero-float hero-float-2">
+            <div class="hero-float-icon" style="background:var(--purple-bg);">⚡</div>
+            <div>
+              <div class="hero-float-text">Email sent</div>
+              <div class="hero-float-sub">Welcome sequence triggered</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="container">
+    <div class="trust-label">Trusted by growing teams worldwide</div>
+    <div class="trust-logos">
+      <span class="trust-logo">Shopify</span>
+      <span class="trust-logo">Linear</span>
+      <span class="trust-logo">Notion</span>
+      <span class="trust-logo">Figma</span>
+      <span class="trust-logo">Vercel</span>
+      <span class="trust-logo">Stripe</span>
+    </div>
+  </div>
+</section>
+
+<!-- ZIGZAG SECTIONS -->
+<section class="zigzag">
+  <div class="container">
+    <div class="zigzag-header">
+      <h2>Everything your business needs.<br>Nothing it doesn't.</h2>
+      <p>CRM, automation, and AI — working together so you can focus on what matters: growing your business.</p>
+    </div>
+
+    <!-- CRM -->
+    <div class="zigzag-row">
+      <div class="zigzag-text">
+        <span class="zigzag-badge crm">⬡ CRM</span>
+        <h3>Never lose track of a lead again.</h3>
+        <p>Your contacts, deals, and pipeline — all in one place. Nuvode's CRM automatically organizes every interaction so nothing falls through the cracks.</p>
+        <div class="zigzag-features">
+          <div class="zigzag-feature"><span class="zigzag-check cyan">✓</span> Visual deal pipeline with drag-and-drop</div>
+          <div class="zigzag-feature"><span class="zigzag-check cyan">✓</span> Auto-tagging and smart segmentation</div>
+          <div class="zigzag-feature"><span class="zigzag-check cyan">✓</span> Contact timeline with full interaction history</div>
+          <div class="zigzag-feature"><span class="zigzag-check cyan">✓</span> Custom fields and deal stages</div>
+        </div>
+      </div>
+      <div class="zigzag-visual">
+        <div class="blob blob-3"></div>
+        <div class="zigzag-card">
+          <div class="zigzag-card-title">Sales Pipeline</div>
+          <div class="zigzag-pipeline">
+            <div class="pipeline-col">
+              <div class="pipeline-col-title">New</div>
+              <div class="pipeline-item" style="border-color:var(--cyan);">Sarah M.</div>
+              <div class="pipeline-item" style="border-color:var(--cyan);">James K.</div>
+            </div>
+            <div class="pipeline-col">
+              <div class="pipeline-col-title">Contacted</div>
+              <div class="pipeline-item" style="border-color:var(--orange);">Amara L.</div>
+            </div>
+            <div class="pipeline-col">
+              <div class="pipeline-col-title">Proposal</div>
+              <div class="pipeline-item" style="border-color:var(--purple);">David R.</div>
+              <div class="pipeline-item" style="border-color:var(--purple);">Lisa T.</div>
+            </div>
+            <div class="pipeline-col">
+              <div class="pipeline-col-title">Won</div>
+              <div class="pipeline-item" style="border-color:var(--green);">Max B.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTOMATION -->
+    <div class="zigzag-row reverse">
+      <div class="zigzag-text">
+        <span class="zigzag-badge auto">⚡ Automation</span>
+        <h3>Put your marketing on autopilot.</h3>
+        <p>Build workflows that run while you sleep. Email sequences, SMS follow-ups, lead scoring, and smart triggers — all without touching a button.</p>
+        <div class="zigzag-features">
+          <div class="zigzag-feature"><span class="zigzag-check purple">✓</span> Visual workflow builder</div>
+          <div class="zigzag-feature"><span class="zigzag-check purple">✓</span> Email and SMS sequences</div>
+          <div class="zigzag-feature"><span class="zigzag-check purple">✓</span> Behavior-based triggers</div>
+          <div class="zigzag-feature"><span class="zigzag-check purple">✓</span> A/B testing built in</div>
+        </div>
+      </div>
+      <div class="zigzag-visual">
+        <div class="zigzag-card">
+          <div class="zigzag-card-title">Welcome Sequence</div>
+          <div class="auto-flow">
+            <div class="auto-step">
+              <div class="auto-step-num">1</div>
+              <div><div class="auto-step-text">New lead signs up</div><div class="auto-step-sub">Trigger: Form submission</div></div>
+            </div>
+            <div class="auto-connector"></div>
+            <div class="auto-step">
+              <div class="auto-step-num">2</div>
+              <div><div class="auto-step-text">Send welcome email</div><div class="auto-step-sub">Delay: Immediate</div></div>
+            </div>
+            <div class="auto-connector"></div>
+            <div class="auto-step">
+              <div class="auto-step-num">3</div>
+              <div><div class="auto-step-text">Wait 2 days, send case study</div><div class="auto-step-sub">Condition: Email opened</div></div>
+            </div>
+            <div class="auto-connector"></div>
+            <div class="auto-step">
+              <div class="auto-step-num">4</div>
+              <div><div class="auto-step-text">Book a call CTA</div><div class="auto-step-sub">Delay: 1 day after open</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VODE AI -->
+    <div class="zigzag-row">
+      <div class="zigzag-text">
+        <span class="zigzag-badge vode">✦ Meet Vode — Your AI Employee</span>
+        <h3>An AI that works for you. Literally.</h3>
+        <p>Vode isn't a chatbot. It's your AI employee. It follows up with leads, writes emails, updates your CRM, and sends you a daily report — all without being asked.</p>
+        <div class="zigzag-features">
+          <div class="zigzag-feature"><span class="zigzag-check green">✓</span> Responds to new leads in under 2 minutes</div>
+          <div class="zigzag-feature"><span class="zigzag-check green">✓</span> Writes and sends email campaigns</div>
+          <div class="zigzag-feature"><span class="zigzag-check green">✓</span> Updates CRM records automatically</div>
+          <div class="zigzag-feature"><span class="zigzag-check green">✓</span> Daily morning brief with insights</div>
+        </div>
+      </div>
+      <div class="zigzag-visual">
+        <div class="zigzag-card">
+          <div class="zigzag-card-title">Vode Activity</div>
+          <div class="vode-chat">
+            <div>
+              <div class="vode-msg-label">Vode — 8:02 AM</div>
+              <div class="vode-msg ai">Good morning! Here's your daily brief: 12 new leads overnight, 3 replied to yesterday's email, and 1 deal moved to proposal stage. I've already sent follow-ups to the 12 new leads.</div>
+            </div>
+            <div style="align-self:flex-end;">
+              <div class="vode-msg-label" style="text-align:right;">You — 8:15 AM</div>
+              <div class="vode-msg user">Great. Send a case study to the 3 who replied.</div>
+            </div>
+            <div>
+              <div class="vode-msg-label">Vode — 8:15 AM</div>
+              <div class="vode-msg ai">Done. Sent the SaaS Growth case study to all 3 contacts. I'll track opens and follow up in 48 hours if they don't respond.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="features-header">
+      <h2>Built for speed. Designed for growth.</h2>
+      <p>Every feature engineered to help you move faster, convert more, and scale without limits.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--cyan-bg);">⚡</div>
+        <div class="feature-name">Lightning fast</div>
+        <div class="feature-desc">Sub-50ms response times. Global CDN. Your pages and emails load instantly, everywhere.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--green-bg);">🔒</div>
+        <div class="feature-name">Secure by default</div>
+        <div class="feature-desc">Automatic SSL, encrypted data at rest, and SOC 2 compliant infrastructure.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--purple-bg);">📊</div>
+        <div class="feature-name">Smart analytics</div>
+        <div class="feature-desc">Real-time dashboards. Track traffic, conversions, revenue, and customer behavior in one place.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--orange-bg);">🔌</div>
+        <div class="feature-name">API-first</div>
+        <div class="feature-desc">Full REST APIs. Build custom integrations, connect your stack, and automate anything.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--pink-bg);">👥</div>
+        <div class="feature-name">Team collaboration</div>
+        <div class="feature-desc">Role-based access, shared workspaces, and audit logs for growing teams.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--cyan-bg);">💬</div>
+        <div class="feature-name">24/7 support</div>
+        <div class="feature-desc">Real humans. Under 2-hour response times. We're here when you need us.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-header">
+      <h2>Simple, honest pricing.</h2>
+      <p>Start free. Scale as you grow. No hidden fees.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-plan">Starter</div>
+        <div class="price-amount">$0 <span>/mo</span></div>
+        <div class="price-desc">For launching your first project.</div>
+        <ul class="price-features">
+          <li>100 CRM contacts</li>
+          <li>Basic automations</li>
+          <li>Vode in Observer mode</li>
+          <li>Email support</li>
+        </ul>
+        <button class="price-btn">Get started free</button>
+      </div>
+      <div class="price-card featured">
+        <div class="price-plan">Growth</div>
+        <div class="price-amount">$49 <span>/mo</span></div>
+        <div class="price-desc">For businesses ready to scale.</div>
+        <ul class="price-features">
+          <li>10,000 CRM contacts</li>
+          <li>Full automation suite</li>
+          <li>Vode Co-Pilot + Autopilot</li>
+          <li>Email + SMS campaigns</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="price-btn">Start 14-day trial</button>
+      </div>
+      <div class="price-card">
+        <div class="price-plan">Enterprise</div>
+        <div class="price-amount">Custom</div>
+        <div class="price-desc">For teams with advanced needs.</div>
+        <ul class="price-features">
+          <li>Unlimited everything</li>
+          <li>Vode full Autopilot</li>
+          <li>Custom integrations</li>
+          <li>Dedicated account manager</li>
+          <li>SLA guarantee</li>
+        </ul>
+        <button class="price-btn">Contact sales</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2>Ready to grow smarter?</h2>
+    <p>Join thousands of businesses using Nuvode to capture, nurture, and convert leads on autopilot.</p>
+    <div class="cta-actions">
+      <button class="btn-primary">Start for free →</button>
+      <button class="btn-ghost">▶ Watch demo</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="88" height="88" rx="20" fill="#0A1628"/>
+            <path d="M26 74V26h12l20 28V26h12v48H58L38 46v28H26z" fill="#FFF"/>
+          </svg>
+          Nuvode
+        </div>
+        <p class="footer-desc">All-in-one CRM and marketing automation. Capture, nurture, and convert — on autopilot.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <a href="#">CRM</a>
+        <a href="#">Automation</a>
+        <a href="#">Vode AI</a>
+        <a href="#">Integrations</a>
+        <a href="#">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <a href="#">Documentation</a>
+        <a href="#">API Reference</a>
+        <a href="#">Status</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Nuvode. All rights reserved.</span>
+      <span>
+        <a href="#" style="color:var(--dim);margin-right:16px;">Privacy</a>
+        <a href="#" style="color:var(--dim);margin-right:16px;">Terms</a>
+        <a href="#" style="color:var(--dim);">Cookies</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
